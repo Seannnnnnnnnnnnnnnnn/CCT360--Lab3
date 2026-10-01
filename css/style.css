@@ -1,1 +1,93 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
+body{
+    background-color: aliceblue;
+}
+
+/* give each section a name tag */
+.header{
+    grid-area: hd;
+    background-color: whitesmoke;
+}
+
+.nav{
+    grid-area: na;
+    background-color: antiquewhite;
+}
+
+.main{
+    grid-area: mn;
+    background-color: beige;
+}
+
+.footer{
+    grid-area: ft;
+    background-color: blueviolet;
+}
+
+/* mobile: one column, every area stacked */
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "hd"
+        "na"
+        "mn"
+        "ft";
+    gap: 1rem;
+}
+
+h1{
+    padding: 20px;
+}
+
+ul{
+    list-style-type: none;
+    padding: 20px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.main{
+    padding: 1rem;
+}
+
+/* inner grid for the cards, one column on mobile */
+.card-grid{
+    display: grid;
+    gap: 1rem;
+}
+
+.card{
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 4px 4px;
+}
+
+/* desktop */
+@media(min-width:768px){
+    .wrapper{
+        grid-template-columns: 220px 1fr; /*fixed nav, main takes the rest*/
+        grid-template-areas:
+            "hd hd"
+            "na mn"
+            "ft ft";
+    }
+
+    .card-grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .card1{
+        grid-column: 1/-1; /*full width, cards 2 and 3 share the next row*/
+    }
+}
